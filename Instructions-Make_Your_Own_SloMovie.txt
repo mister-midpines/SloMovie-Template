@@ -21,7 +21,7 @@ mkdir orig_frames gray_frames contrast_frames cropped_frames for_github
 ffmpeg -i "$movie_name".mp4 -r 1 %04d.png
 wait
 
-# Skim through the frames manually, and delete any you don't want, like excessive
+# Skim through the frames manually, and delete any you don't want, such as excessive
 # blank/black frames at the beginning and end of the movie.
 
 # Renumber and rename files after removing unwanted frames
