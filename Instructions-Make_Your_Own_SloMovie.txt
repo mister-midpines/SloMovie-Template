@@ -68,8 +68,8 @@ cp *.png gray_frames
 wait
 
 #-----------------------------
-# Pause here to check the brighness and contrast settings.
-# Experiment with the command below to find parameters that work.
+# Pause here to check the brighness and contrast in the images created by the previous command.
+# Change them by experimenting with the command below to find parameters that work.
 # _____________________________
 
 # Change brightness and contrast
@@ -93,7 +93,7 @@ mv *.png for_github/frames
 
 # Move the new SloMovie files onto github.
 
-git clone https://github.com/mister-midpines/"$movie_name"
+git clone https://github.com/<your_user_name>/"$movie_name"
 cd "$movie_name"
 
 git rm _data/image_list.txt
