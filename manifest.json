@@ -1,7 +1,7 @@
 {
-  "short_name": "Jurassic Park",
-  "name": "Jurassic Park",
-  "description": "Jurassic Park, one frame at a time.",
+  "short_name": "Test SloMovie",
+  "name": "Test SloMovie",
+  "description": "Test Slomovie: One Frame at a Time.",
   "icons": [
     {
       "src": "https://jaws.superfun.games/touch-icon.png",
