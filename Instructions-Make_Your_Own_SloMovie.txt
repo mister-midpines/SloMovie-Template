@@ -1,4 +1,4 @@
-# Instructions (Additional notes are pasted below.)
+# Instructions
 
 # To get started:
 # - Get your preferred movie, in *.mp4 format
