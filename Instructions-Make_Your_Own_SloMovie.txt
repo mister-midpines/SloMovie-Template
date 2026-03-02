@@ -2,11 +2,10 @@
 # Instructions
 
 # I have a little E-Paper display called a TRMNL that's good at showing 1- or 2-bit
-# grayscale images. I set mine up so it shows movies suuuuppppppeeeeerrrrrrr slowly.
-# From a practical standpoint, what it does is show a frame from a movie, wait 30 minutes,
-# skip ahead 1 second in the movie, and repeat. So the movie shows at about 2 seconds an
-# hour. That will make a typical movie take about 5 months to show. Or something
-# like that.
+# grayscale images. I set mine up so it shows movies super sloooowly. What it does is
+# show a frame from a movie, wait 30 minutes, skip ahead 1 second in the movie, and repeat.
+# So the movie shows at about 2 seconds an hour. That will make a typical movie take
+# about 5 months to show. Or something like that.
 
 # To get started:
 # - Get your preferred movie, in *.mp4 format
@@ -14,7 +13,9 @@
 # - Set up the new repository as a web site using <go to repository> -> Settings ->
 #   Pages [in sidebar] -> Build and Deployment, then Set Branch to Main
 # - Install imagemagick and ffmpeg on your computer
-# * The scripts below are written to run in the bash shell
+# - Run the bash scripts below.
+
+# ** NOTE: Image Magick throws warnings over these scripts. **
 
 #
 ###################################################################
@@ -33,7 +34,7 @@ mkdir orig_frames gray_frames contrast_frames cropped_frames for_github
 ffmpeg -i <your_movie's_name>.mp4 -r 1 %04d.png
 wait
 
-# Skim through the frames manually, and delete any you don't want, such as excessive
+# Skim through the frames manually and delete any you don't want, such as excessive
 # blank/black frames at the beginning and end of the movie, ads, etc.
 
 # Renumber and rename files after removing unwanted frames
@@ -50,8 +51,8 @@ cp *.png orig_frames
 wait
 
 
-# Crop so ratio is 800/480 = 1.666
-# NOTE: Image Magick throws a warning over this. Ignore it.
+# Crop so the image size is correct for the TRMNL,
+# which is 800/480.
 for j in *.png
     do
     	magick convert "$j" -gravity center -crop 800:480 "$j"
