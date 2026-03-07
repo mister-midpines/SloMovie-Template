@@ -142,11 +142,10 @@ git push
 # Make the image update rate whatever you want. I recommend an hour. You
 # can also tweak the image update rate by editing the cron parameters near the
 # top of the file in your new repository called
-# .github/workflows/advance_image.yml
-#
-# Note: The TRMNL screen refreshes fairly slowly, so it blinks when the image
-# updates. As a result, if your TRMNL is in your line of sight, updating the
-# image too often makes it kind of annoying. Stick with an hour.
+# .github/workflows/advance_image.yml. Note that the TRMNL screen refreshes
+# fairly slowly, so it blinks when the image updates. As a result, if your
+# TRMNL is in your line of sight, updating the image too often makes it kind
+# of annoying. Stick with an hour.
 
 # Note: TRMNL defaults to showing images as 1-bit. Changing it to 2-bit
 # often makes it look a little better.
