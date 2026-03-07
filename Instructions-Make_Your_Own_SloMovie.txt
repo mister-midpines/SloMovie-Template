@@ -3,19 +3,20 @@
 
 # I have a little E-Paper display called a TRMNL that's good at showing 1- or 2-bit
 # grayscale images. I set mine up so it shows movies super sloooowly. What it does is
-# show a frame from a movie, wait 30 minutes, skip ahead 1 second in the movie, and repeat.
-# So the movie shows at about 2 seconds an hour. That will make a typical movie take
-# about 5 months to show. Or something like that.
+# show a frame from a movie, wait 30 minutes, skip ahead 1 second in the movie,
+# and repeat. So the movie shows at about 2 seconds an hour. That will make a typical 
+# movie take about 5 months to show. Or something like that.
 
 # To get started:
 # - Get your preferred movie, in *.mp4 format
 # - Clone the SloMovie_Template into your own SloMovie repository, named for the movie.
-# - Set up the new repository as a web site using <go to repository> -> Settings ->
-#   Pages [in sidebar] -> Build and Deployment, then Set Branch to Main
+# - On the github website, set up your new repository as a web site using
+# <go to repository> -> Settings -> Pages [in sidebar] -> Build and Deployment,
+# then Set Branch to Main
 # - Install imagemagick and ffmpeg on your computer
 # - Run the bash scripts below.
 
-# ** NOTE: Image Magick throws warnings over these scripts. **
+# ** NOTE: Image Magick throws warnings over these scripts. Who cares? Go for it. **
 
 #
 ###################################################################
@@ -23,14 +24,16 @@
 ###################################################################
 # Steps:
 
-# Subsequent commands split a movie in mp4 format into frames, and incrementally modify
-# them to a format that will look good on a TRMNL.
+# Run the scripts and commands below on the command line of your computer,
+# using the bash shell. They'll split your mp4 into frames, incrementally
+# modify the frames to a format that will look good on a TRMNL, and get them
+# uploaded to the website you created above.
 
 # Make directories to hold the intermediate edited images
 mkdir orig_frames gray_frames contrast_frames cropped_frames for_github
 
 # Strip frames out of the mp4 movie with the name above (-r is the number of seconds
-# between extracted frames)
+# between extracted frames. I like 1 second, but make it whatever you want.)
 ffmpeg -i <your_movie's_name>.mp4 -r 1 %04d.png
 wait
 
@@ -49,7 +52,6 @@ wait
 
 cp *.png orig_frames
 wait
-
 
 # Crop so the image size is correct for the TRMNL,
 # which is 800/480.
@@ -81,8 +83,9 @@ cp *.png gray_frames
 wait
 
 #-----------------------------
-# Pause here to manually check the brigthness and contrast in the images created by the previous command.
-# Change them by experimenting with the command below to find parameters that return something nice.
+# Pause here to manually check the brigthness and contrast in the images
+# created by the previous command. Experiment with the command below to
+# find parameters that return something nice.
 # _____________________________
 
 # Change brightness and contrast
@@ -108,7 +111,7 @@ mv *.png for_github/frames
 ######################################################
 
 ######################################################
-# Move the new SloMovie files onto github.
+# Move the new SloMovie files into your github website.
 
 git clone https://github.com/<your_user_name>/<your_movie's_name>
 cd <your_movie's_name>
@@ -122,7 +125,9 @@ git add frames/*.png
 
 git commit
 
-git push # If there's a problem use the nuclear option: git push -f origin main
+git push
+# If push doesn't work and you're brave, use the nuclear option:
+# git push -f origin main
 
 #
 #####################################################
@@ -130,12 +135,13 @@ git push # If there's a problem use the nuclear option: git push -f origin main
 #####################################################
 #
 
-On the TRMNL, install the plugin called Image Display. In its
-settings, set the url to https://<your_github_name>.github.io/<movie_name>/public/current.png,
-and the refresh rate to whatever you want.
+# On the TRMNL, install the plugin called Image Display. In its
+# settings, set the url to
+# https://<your_github_name>.github.io/<movie_name>/public/current.png,
+# and make the refresh rate whatever you want. I recommend an hour.
 
-TRMNL defaults to showing images as 1-bit. Changing it to 2-bit in TRMNL's
-settings makes it look a little better.
+# Note: TRMNL defaults to showing images as 1-bit. Changing it to 2-bit
+# often makes it look a little better.
 
 #
 ####################################################
